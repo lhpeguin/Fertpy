@@ -2,6 +2,7 @@
 name = "fertpy"
 version = "0.1.0"
 requires-python = ">=3.11"
+license = {file = "LICENSE"}
 
 [build-system]
 requires = ["setuptools"]
