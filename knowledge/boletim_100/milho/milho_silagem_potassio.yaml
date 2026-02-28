@@ -1,0 +1,79 @@
+potassio:
+  nutriente: K
+  nutriente_recomendado: K2O
+  unidade_saida: kg/ha
+
+  fonte_referencia:
+    documento: "Boletim 100"
+    instituicao: "IAC"
+    ano: 2022
+
+  metodo_analitico: resina
+  unidade_entrada: mmolc/dm3
+
+  regras:
+
+    # ======================
+    # Produtividade <45
+    # ======================
+
+    - condicoes: { produtividade: "<45", teor_k: "<1.6" }
+      recomendacao: 70
+
+    - condicoes: { produtividade: "<45", teor_k: "1.6 <= teor_k <= 3" }
+      recomendacao: 40
+
+    - condicoes: { produtividade: "<45", teor_k: ">3" }
+      recomendacao: 30
+
+    # ======================
+    # Produtividade 45–55
+    # ======================
+
+    - condicoes: { produtividade: "45 <= produtividade < 55", teor_k: "<1.6" }
+      recomendacao: 90
+
+    - condicoes: { produtividade: "45 <= produtividade < 55", teor_k: "1.6 <= teor_k <= 3" }
+      recomendacao: 50
+
+    - condicoes: { produtividade: "45 <= produtividade < 55", teor_k: ">3" }
+      recomendacao: 30
+
+    # ======================
+    # Produtividade 55–60
+    # ======================
+
+    - condicoes: { produtividade: "55 <= produtividade < 60", teor_k: "<1.6" }
+      recomendacao: 100
+
+    - condicoes: { produtividade: "55 <= produtividade < 60", teor_k: "1.6 <= teor_k <= 3" }
+      recomendacao: 70
+
+    - condicoes: { produtividade: "55 <= produtividade < 60", teor_k: ">3" }
+      recomendacao: 40
+
+    # ======================
+    # Produtividade 60–65
+    # ======================
+
+    - condicoes: { produtividade: "60 <= produtividade < 65", teor_k: "<1.6" }
+      recomendacao: 110
+
+    - condicoes: { produtividade: "60 <= produtividade < 65", teor_k: "1.6 <= teor_k <= 3" }
+      recomendacao: 90
+
+    - condicoes: { produtividade: "60 <= produtividade < 65", teor_k: ">3" }
+      recomendacao: 50
+
+    # ======================
+    # Produtividade >65
+    # ======================
+
+    - condicoes: { produtividade: ">65", teor_k: "<1.6" }
+      recomendacao: 120
+
+    - condicoes: { produtividade: ">65", teor_k: "1.6 <= teor_k <= 3" }
+      recomendacao: 100
+
+    - condicoes: { produtividade: ">65", teor_k: ">3" }
+      recomendacao: 60
