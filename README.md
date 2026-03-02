@@ -1,6 +1,6 @@
 # Fertpy
 
-**Languages:** 🇺🇸 English | 🇧🇷 [Português (Brasil)](README.pt-br.md)
+**Languages:** 🇺🇸 English | 🇧🇷 [Português (Brasil)](README.pt-BR.md)
 
 **Fertpy** is a domain-driven, rule-based agronomic calculation engine for soil correction and nutrient dose computation.
 
