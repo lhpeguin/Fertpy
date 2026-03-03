@@ -1,0 +1,25 @@
+[project]
+name = "fertpy"
+version = "0.2.1"
+description = "Domain-driven deterministic agronomic calculation engine"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+dependencies = [
+    "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.2"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["fertpy*"]
+
+[tool.setuptools.package-data]
+fertpy = ["knowledge/**/*.yaml"]
