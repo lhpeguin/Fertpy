@@ -11,7 +11,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
-from fertpy.infra.loaders.yaml_loader import carregar_modelo
+from fertpy.infra.loaders.correcao_loader import carregar_modelo_correcao
 from fertpy.core.engine.calculo_calagem import CalagemEngine
 
 
@@ -19,10 +19,9 @@ class Calagem:
 
     def __init__(self, cultura: str):
 
-        yaml = carregar_modelo(
+        yaml = carregar_modelo_correcao(
             "boletim_100",
-            cultura,
-            f"{cultura}_calagem"
+            cultura
         )["calagem"]
 
         self.modelo = yaml

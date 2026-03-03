@@ -167,9 +167,9 @@ Essa arquitetura permite:
 
 ## Status do Projeto
 
-**Versão Atual:** v0.1.0 — Lançamento Público Inicial
+**Versão Atual:** v0.2.0 — Refatoração Estrutural e Consolidação de Arquitetura
 
-O Fertpy está em desenvolvimento ativo.
+O Fertpy está em desenvolvimento ativo, com foco na consolidação da arquitetura orientada a domínio e na organização explícita do conhecimento agronômico.
 
 ### Escopo Implementado
 
@@ -177,24 +177,36 @@ O Fertpy está em desenvolvimento ativo.
 - Cálculo de correção do solo (calagem)
 - Cálculo de doses de Nitrogênio (N), Fósforo (P) e Potássio (K)
 - Fonte técnica única por nutriente
-- Modelagem do conhecimento agronômico baseada em YAML
+- Estrutura modular para múltiplas finalidades (ex: grãos, silagem)
+- Organização do conhecimento técnico por domínio (adubação e correção)
 
-### Destaques da Arquitetura e do Motor
+### Destaques da Arquitetura
 
-- Separação clara entre motor de cálculo e critérios agronômicos
-- Avaliação determinística de regras (o motor executa a lógica, mas não define regras agronômicas)
-- Estrutura orientada a domínio (DDD)
-- Parsing em camada de infraestrutura para normalização de intervalos e condições
-- Modelagem explícita de intervalos via objeto de valor dedicado
-- Avaliação de regras N-dimensionais (sem número fixo de variáveis de decisão)
-- Representação declarativa do conhecimento
+- Separação explícita entre:
+  - Domínio agronômico
+  - Infraestrutura de carregamento
+  - Motor de cálculo
+- Base de conhecimento estruturada por diretórios (não por nomes compostos de arquivos)
+- Loaders especializados para adubação e correção
+- Arquitetura orientada a domínio (DDD)
+- Avaliação determinística e desacoplada de regras
+- Representação declarativa do conhecimento agronômico
+- Suporte a critérios N-dimensionais
+
+### Avanços em Relação à v0.1.0
+
+- Remoção do loader YAML genérico
+- Eliminação de parsing baseado em nome de arquivo
+- Reorganização completa da estrutura knowledge
+- Introdução de camadas services e utils
+- Preparação da arquitetura para múltiplos boletins e fontes
 
 ### Limitações Atuais
 
 - Suporte a uma única cultura (milho)
 - Fonte técnica única por nutriente
 - Um único método analítico por nutriente
-- Contexto técnico agronômico brasileiro
+- Recomendações técnicas restritas a um único país (Brasil)
 - Sem agregação de múltiplas fontes
 - Lógica estritamente determinística (sem modelagem probabilística)
 
@@ -202,270 +214,74 @@ O Fertpy está em desenvolvimento ativo.
 
 ## Roadmap
 
-O desenvolvimento do Fertpy está estruturado em fases evolutivas, com foco em consolidação arquitetural, expansão agronômica e robustez técnica.
+O desenvolvimento do Fertpy está organizado em ciclos evolutivos com foco em:
+
+- Expansão agronômica
+- Robustez técnica
+- Explicabilidade
+- Escalabilidade estrutural
 
 ---
 
-### Fase 1 — Fundação do Motor (Concluída)
+### v0.1.0 — Lançamento Público Inicial (Concluído)
 
-Corresponde à versão **v0.1.0 — Lançamento Público Inicial**.
-
-Esta fase estabeleceu o núcleo determinístico de cálculo agronômico do Fertpy.
-
----
-
-#### Implementado
-
-- Motor determinístico de cálculo agronômico
-- Arquitetura híbrida:
-  - Modelos baseados em regras N-dimensionais
-  - Modelos baseados em fórmulas algébricas (ex.: calagem)
-- Parsing estruturado de intervalos e condições
-- Separação clara entre:
-  - Motor de cálculo
-  - Representação do conhecimento (YAML)
-- Correção de solo (calagem)
-- Macronutrientes primários:
-  - Nitrogênio (N)
-  - Fósforo (P)
-  - Potássio (K)
-- Estrutura inicial de rastreabilidade de fontes técnicas
-
-A Fase 1 consolida o Fertpy como uma representação computacional declarativa e determinística de boletins agronômicos.
+- Engine baseada em regras e fórmulas
+- Suporte a milho
+- Calagem
+- N, P, K
+- Estrutura YAML declarativa
 
 ---
 
-### Fase 2 — Expansão do Escopo Agronômico
+### v0.2.0 — Consolidação Arquitetural
 
-**Foco:** ampliação funcional e consolidação operacional.
-
----
-
-#### 1. Parametrização Explícita de Entradas
-
-Criação de:
-
-```text
-fertpy/utils/parametros.py
-```
-
-Objetivos:
-
-- Declarar explicitamente parâmetros válidos por cultura e nutriente
-- Melhorar validação de entradas
-- Tornar a API pública mais segura e autoexplicativa
+- Reorganização completa da estrutura knowledge
+- Loaders especializados
+- Separação domínio/infraestrutura
+- Introdução de camadas services e utils
+- Base preparada para múltiplos boletins
 
 ---
 
-#### 2. Expansão de Culturas
+### Próxima Fase — v0.3.0 (Expansão Agronômica)
 
-Inclusão de culturas como:
+Foco: ampliação do escopo técnico.
 
-- Soja
-- Feijão
-- Algodão
-- Trigo
-- Sorgo
-
----
-
-#### 3. Expansão do Escopo Nutricional
-
-Nutrientes atualmente implementados:
-
-- Nitrogênio (N)
-- Fósforo (P)
-- Potássio (K)
-
-Expansão planejada:
-
-- Macronutrientes secundários
-- Micronutrientes
-
-Meta: 14 nutrientes modelados.
+- Parametrização explícita de entradas
+- Expansão de culturas (Soja, Feijão, Trigo, etc.)
+- Expansão nutricional (macro secundários e micronutrientes)
+- Modelagem de fontes fertilizantes
+- Melhor tratamento estruturado de erros
 
 ---
 
-#### 4. Fontes de Fertilizantes Inorgânicos
+### v0.4.0 — Robustez e Normalização
 
-Modelagem de diferentes fontes fertilizantes
-Associação entre doses calculadas e fontes disponíveis
+Foco: consistência técnica e dimensional.
 
-**Importante:**
-
-O Fertpy não realizará bloqueio automático de combinações incompatíveis de fertilizantes.
-A compatibilidade química permanece sob responsabilidade do profissional técnico habilitado.
-
-O sistema poderá emitir alertas informativos com base em boletins técnicos, mas não aplicará restrições automáticas.
+- Normalização automática de unidades
+- Validação dimensional
+- Diferenciação entre erros críticos e alertas
+- Primeira camada de validação semântica
 
 ---
 
-#### 5. Melhoria no Tratamento de Erros
+### v0.5.0 — Explicabilidade e Rastreabilidade
 
-- Mensagens de erro mais claras e estruturadas
-- Diferenciação entre:
-  - Erros estruturais
-  - Erros de validação
-  - Alertas técnicos
+Foco: auditabilidade científica.
 
----
-
-### Fase 3 — Consolidação Técnica e Expansão Estrutural
-
-Foco: robustez, explicabilidade e rastreabilidade completa.
+- Metadados completos de cálculo
+- Rastreamento da regra ativada
+- Sistema interno de trace/debug
+- Modo explicativo (explain())
 
 ---
 
-#### 1. Suporte a Culturas Perenes
+### v0.6.0 — Expansão Estrutural
 
-- Inclusão de culturas perenes
-- Ajustes estruturais para ciclos plurianuais
-- Parametrização por estágios fenológicos
-- Adequação da lógica de recomendação para sistemas perenes
-
----
-
-#### 2. Normalização de Entradas
-
-Estrutura proposta:
-
-```text
-fertpy/normalizacao/base.py
-fertpy/normalizacao/unidade.py
-```
-
-Objetivos:
-
-- Conversão automática de unidades
-- Consistência dimensional
-- Redução de erros operacionais
-- Padronização interna das unidades de cálculo
-
----
-
-#### 3. Validação Dimensional
-
-O sistema implementará validação dimensional e agronômica das entradas, garantindo coerência física, matemática e técnica antes da execução das regras.
-
-Essa camada tem como objetivo prevenir inconsistências operacionais e interpretações incorretas de dados analíticos.
-
-Exemplos:
-
-- CTC informada em unidade incorreta → erro crítico
-- pH fora de intervalo agronomicamente plausível → alerta técnico
-- Saturação por bases > 100% → erro crítico
-- Valores negativos para atributos químicos → erro crítico
-- Incompatibilidade entre unidade informada e método analítico → erro
-
-O sistema diferenciará explicitamente:
-
-- Erros críticos → impedem a execução do cálculo
-- Alertas técnicos → permitem execução, mas sinalizam possível inconsistência
-
-Essa distinção preserva o caráter determinístico do motor, mantendo ao mesmo tempo rigor técnico e responsabilidade do usuário.
-
----
-
-#### 4. Metadados de Cálculo e Rastreabilidade Completa
-
-```text
-fertpy/core/metadata.py
-```
-
-Cada objeto de resultado carregará metadados estruturados que descrevem não apenas o valor calculado, mas também o caminho lógico que levou àquela decisão.
-
-Essa camada transforma o resultado em um artefato auditável, permitindo reconstruir exatamente quais critérios técnicos foram aplicados pelo motor.
-
-Os metadados incluirão, entre outros:
-
-- Cultura
-- Nutriente
-- Boletim técnico de referência
-- Arquivo YAML de origem
-- Regra ativada
-- Condições avaliadas
-- Classe interpretativa atribuída
-- Intervalo ou faixa acionada
-- Método analítico considerado
-
-Isso permitirá:
-
-- Auditoria completa do processo decisório
-- Reprodutibilidade técnica verificável
-- Transparência na aplicação das regras
-- Comparação entre diferentes versões de boletins
-- Base para futuras funcionalidades de explicabilidade
-
-O objetivo é que nenhuma recomendação seja um “valor isolado”, mas sim o resultado rastreável de um conjunto explícito de critérios técnicos..
-
----
-
-#### 5. Rastreamento da Regra Ativada
-
-Capacidade de identificar:
-
-- Qual regra foi acionada
-- De qual arquivo YAML
-- Em qual seção
-
-Garantindo auditabilidade e transparência técnica.
-
----
-
-#### 6. Modo Explicativo
-
-Exemplo planejado de uso:
-
-```text
-fertpy/core/explain.py
-```
-```python
-explain(resultado) -> str
-```
-
-Exemplo de saída:
-
-P = 12 mg/dm³ enquadrado na classe <16 e produtividade esperada de 9, enquadrando-se no intervalo de 8–10, segundo as informações presentes em cultura_finalidade_fosforo.yaml. Dose definida como 100 kg/ha.
-
-Objetivos:
-
-- Tornar o motor auditável
-- Facilitar uso acadêmico
-- Aumentar transparência técnica
-- Apoiar validação científica
-
----
-
-#### 7. Camada de Validação Semântica
-
-```text
-fertpy/validacao/semantica.py
-```
-
-Funções previstas:
-
-- Coerência entre CTC e dose
-- Verificação da relação Ca/Mg
-- Validação de consistência da calagem
-
-Características:
-
-- Apenas geração de alertas
-- Nunca bloqueio automático
-- Respeito à responsabilidade técnica do usuário
-
----
-
-#### 8. Sistema Interno de Debug e Rastreamento
-
-```text
-fertpy/core/trace.py
-```
-Objetivo:
-
-- Permitir análise detalhada do fluxo de decisão
-- Apoiar pesquisa e validação acadêmica
-- Facilitar testes estruturais do motor
+- Suporte a culturas perenes
+- Estrutura para múltiplos boletins
+- Base para internacionalização futura
 
 ---
 

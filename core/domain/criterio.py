@@ -38,6 +38,9 @@ class Criterio:
         for nome, condicao in self.condicoes.items():
 
             if not isinstance(nome, str) or not nome.strip():
+                # ==================================
+                # inserir função parametros validos
+                # ==================================
                 raise TypeError("Nome de condição inválido")
 
             if not isinstance(condicao, (Intervalo, str)):

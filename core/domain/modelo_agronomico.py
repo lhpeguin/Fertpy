@@ -12,8 +12,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
 from dataclasses import dataclass
+from collections import defaultdict
 
 from fertpy.core.domain.criterio import Criterio
+from fertpy.core.domain.exceptions import ParametroInvalidoError
 
 
 @dataclass(frozen=True)
@@ -42,3 +44,69 @@ class ModeloAgronomico:
         for c in self.criterios:
             if not isinstance(c, Criterio):
                 raise TypeError("Todos os critérios devem ser instâncias de criterio")
+
+    @property
+    def variaveis_esperadas(self) -> set[str]:
+        variaveis = set()
+
+        for criterio in self.criterios:
+            variaveis.update(criterio.condicoes.keys())
+
+        return variaveis
+    
+    def valores_discretos_por_variavel(self) -> dict[str, set]:
+
+        valores = defaultdict(set)
+
+        for criterio in self.criterios:
+            for var, cond in criterio.condicoes.items():
+                if isinstance(cond, str):
+                    valores[var].add(cond)
+        
+        return valores
+    
+    def validar_contexto(self, contexto: dict):
+        faltando = self.variaveis_esperadas - contexto.keys()
+        if faltando:
+            raise ValueError(
+                f"Variáveis obrigatórias ausentes: {sorted(faltando)}"
+            )
+        
+        extras = contexto.keys() - self.variaveis_esperadas
+        if extras:
+            raise ValueError(
+                f"Variáveis inesperadas: {sorted(extras)}"
+            )
+        
+        for var, valor in contexto.items():
+
+            exemplos = [
+                criterio.condicoes[var]
+                for criterio in self.criterios
+                if var in criterio.condicoes
+            ]
+
+            if not exemplos:
+                continue
+
+            exemplo = exemplos[0]
+
+            if isinstance(exemplo, str):
+                valores_validos = {
+                    c.condicoes[var]
+                    for c in self.criterios
+                    if isinstance(c.condicoes[var], str)
+                }
+
+                if valor not in valores_validos:
+                    raise ParametroInvalidoError(
+                        var,
+                        valor,
+                        sorted(valores_validos)
+                    )
+            
+            else:
+                if not isinstance(valor, (int, float)):
+                    raise TypeError(
+                        f"Variável '{var}' deve ser numérica"
+                    )

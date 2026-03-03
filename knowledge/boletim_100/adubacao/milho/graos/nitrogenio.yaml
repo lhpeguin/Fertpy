@@ -17,40 +17,40 @@ nitrogenio:
     # Produtividade <6
     # ======================
 
-    - condicoes: { produtividade: "<45", classe_resp_N: "media_baixa" }
+    - condicoes: { produtividade: "0 <= produtividade <6", classe_resp_N: "media_baixa" }
       recomendacao: 60
 
-    - condicoes: { produtividade: "<45", classe_resp_N: "alto" }
+    - condicoes: { produtividade: "0 <= produtividade <6", classe_resp_N: "alto" }
       recomendacao: 90
 
     # ======================
     # Produtividade 6–8
     # ======================
 
-    - condicoes: { produtividade: "45 <= produtividade < 55", classe_resp_N: "media_baixa" }
+    - condicoes: { produtividade: "6 <= produtividade < 8", classe_resp_N: "media_baixa" }
       recomendacao: 90
 
-    - condicoes: { produtividade: "45 <= produtividade < 55", classe_resp_N: "alto" }
+    - condicoes: { produtividade: "6 <= produtividade < 8", classe_resp_N: "alto" }
       recomendacao: 120
 
     # ======================
     # Produtividade 8–10
     # ======================
 
-    - condicoes: { produtividade: "55 <= produtividade < 60", classe_resp_N: "media_baixa" }
+    - condicoes: { produtividade: "8 <= produtividade < 10", classe_resp_N: "media_baixa" }
       recomendacao: 120
 
-    - condicoes: { produtividade: "55 <= produtividade < 60", classe_resp_N: "alto" }
+    - condicoes: { produtividade: "8 <= produtividade < 10", classe_resp_N: "alto" }
       recomendacao: 160
 
     # ======================
     # Produtividade 10–12
     # ======================
 
-    - condicoes: { produtividade: "60 <= produtividade < 65", classe_resp_N: "media_baixa" }
+    - condicoes: { produtividade: "10 <= produtividade < 12", classe_resp_N: "media_baixa" }
       recomendacao: 140
 
-    - condicoes: { produtividade: "60 <= produtividade < 65", classe_resp_N: "alto" }
+    - condicoes: { produtividade: "10 <= produtividade < 12", classe_resp_N: "alto" }
       recomendacao: 200
 
 
@@ -58,8 +58,8 @@ nitrogenio:
     # Produtividade >12
     # ======================
 
-    - condicoes: { produtividade: ">65", classe_resp_N: "media_baixa" }
+    - condicoes: { produtividade: ">12", classe_resp_N: "media_baixa" }
       recomendacao: 160
 
-    - condicoes: { produtividade: ">65", classe_resp_N: "alto" }
+    - condicoes: { produtividade: ">12", classe_resp_N: "alto" }
       recomendacao: 220

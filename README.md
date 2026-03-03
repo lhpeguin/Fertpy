@@ -165,27 +165,39 @@ This architecture enables:
 
 ## Project Status
 
-**Current Version:** v0.1.0 — Initial Public Release
+**Current Version:** v0.2.0 — Structural Refactoring and Architectural Consolidation
 
-Fertpy is under active development.
+Fertpy is under active development, with a focus on consolidating its domain-oriented architecture and the explicit organization of agronomic knowledge.
 
 ### Implemented Scope
 
-- Corn (maize) crop support
-- Soil correction (liming) calculation
-- Nitrogen (N), Phosphorus (P), and Potassium (K) dose computation
-- Single technical source per nutrient
-- YAML-based agronomic knowledge modeling
+- Support for corn (maize)
+- Soil correction (liming) calculations
+- Nitrogen (N), Phosphorus (P), and Potassium (K) dose calculations
+- Single technical reference per nutrient
+- Modular structure supporting multiple crop purposes (e.g., grain, silage)
+- Technical knowledge organized by domain (fertilization and soil correction)
 
-### Engine & Architecture Highlights
+### Architectural Highlights
 
-- Clear separation between calculation engine and agronomic criteria
-- Deterministic rule evaluation (engine executes logic but does not define agronomic rules)
-- Domain-driven structure
-- Infrastructure-layer parsing for interval and condition normalization
-- Explicit interval modeling via a dedicated value object
-- N-dimensional rule evaluation (no fixed number of decision variables)
-- Fully declarative knowledge representation
+- Explicit separation between:
+  - Agronomic domain
+  - Loading infrastructure
+  - Calculation engine
+- Knowledge base structured by directories (instead of compound file names)
+- Specialized loaders for fertilization and soil correction
+- Domain-Driven Design (DDD) architecture
+- Deterministic and decoupled rule evaluation
+- Declarative representation of agronomic knowledge
+- Support for N-dimensional criteria
+
+### Improvements Compared to v0.1.0
+
+- Removal of the generic YAML loader
+- Elimination of filename-based parsing
+- Complete reorganization of the knowledge structure
+- Introduction of services and utils layers
+- Architectural preparation for multiple technical bulletins and data sources
 
 ### Current Limitations
 
@@ -200,269 +212,74 @@ Fertpy is under active development.
 
 ## Roadmap
 
-Fertpy’s development is structured in evolutionary phases, focusing on architectural consolidation, agronomic expansion, and technical robustness.
+Fertpy’s development is organized into evolutionary cycles focused on:
+
+- Agronomic expansion
+- Technical robustness
+- Explainability
+- Structural scalability
 
 ---
 
-### Phase 1 — Engine Foundation (Completed)
+### v0.1.0 — Initial Public Release (Completed)
 
-Corresponds to version **v0.1.0 — Initial Public Release**.
-
-This phase established Fertpy’s deterministic agronomic calculation core.
-
----
-
-#### Implemented
-
-- Deterministic agronomic calculation engine
-- Hybrid architecture:
-  - N-dimensional rule-based models
-  - Algebraic formula-based models (e.g., liming)
-- Structured parsing of intervals and conditions
-- Clear separation between:
-  - Calculation engine
-  - Knowledge representation (YAML)
-- Soil correction (liming)
-- Primary macronutrients:
-  - Nitrogen (N)
-  - Phosphorus (P)
-  - Potassium (K)
-- Initial technical source traceability structure
-
-Phase 1 consolidates Fertpy as a declarative and deterministic computational representation of agronomic bulletins.
+- Rule- and formula-based engine
+- Support for corn (maize)
+- Liming calculations
+- Nitrogen (N), Phosphorus (P), and Potassium (K)
+- Declarative YAML-based knowledge structure
 
 ---
 
-### Phase 2 — Agronomic Scope Expansion
+### v0.2.0 — Architectural Consolidation
 
-**Focus:** functional expansion and operational consolidation.
-
----
-#### 1. Explicit Input Parameterization
-
-Creation of:
-
-```text
-fertpy/utils/parametros.py
-```
-
-Objectives:
-
-- Explicit declaration of valid parameters per crop and nutrient
-- Improved input validation
-- Safer and more self-explanatory public API
+- Complete reorganization of the knowledge structure
+- Specialized loaders
+- Clear separation between domain and infrastructure
+- Introduction of services and utils layers
+- Foundation prepared for multiple technical bulletins
 
 ---
 
-#### 2. Crop Expansion
+### Next Phase — v0.3.0 (Agronomic Expansion)
 
-Inclusion of cultures such as:
+Focus: Expansion of technical scope.
 
-- Soybean
-- Common bean
-- Cotton
-- Wheat
-- Sorghum
-
----
-
-#### 3. Nutritional Scope Expansion
-
-Currently implemented nutrients:
-
-- Nitrogen (N)
-- Phosphorus (P)
-- Potassium (K)
-
-Planned:
-
-- Secondary macronutrients
-- Micronutrients
-Target: 14 modeled nutrients.
+- Explicit input parameterization
+- Crop expansion (Soybean, Beans, Wheat, etc.)
+- Nutritional expansion (secondary macronutrients and micronutrients)
+- Modeling of fertilizer sources
+- Improved structured error handling
 
 ---
 
-#### 4. Inorganic Fertilizer Sources
+### v0.4.0 — Robustness and Normalization
 
-Modeling of different fertilizer sources
-Association between calculated doses and available sources
+Focus: Technical and dimensional consistency.
 
-**Important:**
-
-Fertpy will not automatically block incompatible fertilizer combinations.
-Chemical compatibility remains the responsibility of the licensed technical professional.
-
-The system may emit informational alerts based on technical bulletins but will not enforce automatic restrictions.
+- Automatic unit normalization
+- Dimensional validation
+- Differentiation between critical errors and technical warnings
+- Initial semantic validation layer
 
 ---
 
-#### 5. Improved Error Handling
+### v0.5.0 — Explainability and Traceability
 
-- Clearer and more structured error messages
-- Differentiation between:
-  - Structural errors
-  - Validation errors
-  - Technical warnings
+Focus: Scientific auditability.
 
----
-
-### Phase 3 — Technical Consolidation and Structural Expansion
-
-Focus: robustness, explainability, and full traceability.
+- Complete calculation metadata
+- Tracking of activated rules
+- Internal trace/debug system
+- Explain mode (explain())
 
 ---
 
-#### 1. Support for Perennial Crops
+### v0.6.0 — Structural Expansion
 
-- Inclusion of perennial crops
-- Structural adjustments for multi-year cycles
-- Parameterization by phenological stages
-- Adaptation of recommendation logic for perennial systems
-
----
-
-#### 2. Input Normalization
-
-Proposed structure:
-
-```text
-fertpy/normalization/base.py
-fertpy/normalization/unit.py
-```
-
-Objectives:
-
-Automatic unit conversion
-Dimensional consistency
-Reduction of operational errors
-Internal standardization of calculation units
-
----
-
-#### 3. Dimensional Validation
-
-The system will implement dimensional and agronomic validation of inputs, ensuring physical, mathematical, and technical coherence before rule execution.
-
-This layer aims to prevent operational inconsistencies and misinterpretation of analytical data.
-
-Examples:
-
-- CEC provided in incorrect units → critical error
-- pH outside an agronomically plausible range → technical warning
-- Base saturation > 100% → critical error
-- Negative values for chemical attributes → critical error
-- Incompatibility between reported unit and analytical method → error
-
-The system will explicitly differentiate between:
-
-- Critical errors → block calculation execution
-- Technical warnings → allow execution but signal potential inconsistency
-
-This distinction preserves the deterministic nature of the engine while maintaining technical rigor and user responsibility.
-
----
-
-#### 4. Calculation Metadata and Full Traceability
-
-```text
-fertpy/core/metadata.py
-```
-
-Each result object will carry structured metadata describing not only the computed value, but also the logical path that led to that decision.
-
-This layer turns every output into an auditable artifact, enabling full reconstruction of the technical criteria applied by the engine.
-
-Metadata will include, among other elements:
-
-- crop
-- nutrient
-- reference technical bulletin
-- source YAML file
-- activated rule
-- evaluated conditions
-- assigned interpretative class
-- triggered interval or range
-- analytical method considered
-
-This enables:
-
-- Full auditability of the decision process
-- Verifiable technical reproducibility
-- Transparency in rule application
-- Comparison between different bulletin versions
-- Foundation for future explainability features
-
-The goal is that no recommendation exists as an isolated numeric value, but as a fully traceable outcome derived from explicit technical criteria.
-
----
-
-#### 5. Activated Rule Tracking
-
-Capability to identify:
-
-- Which rule was triggered
-- From which YAML file
-- In which section
-
-Ensuring auditability and technical transparency.
-
----
-
-#### 6. Explainability Mode
-
-Planned usage example:
-
-```text
-fertpy/core/explain.py
-```
-```python
-explain(result) -> str
-```
-
-Example output:
-
-P = 12 mg/dm³ classified in the <16 category and expected yield of 9, falling within the 8–10 range, according to the information defined in cultura_finalidade_fosforo.yaml. Dose defined as 100 kg/ha.
-
-Objectives:
-
-- Make the engine auditable
-- Facilitate academic use
-- Increase technical transparency
-- Support scientific validation
-
----
-
-#### 7. Semantic Validation Layer
-
-```text
-fertpy/validation/semanticasemantics.py
-```
-
-Planned functions:
-
-- Coherence between CEC and recommended dose
-- Ca/Mg ratio verification
-- Liming consistency validation
-
-Characteristics:
-
-- Warning generation only
-- No automatic blocking
-- Respect for the user’s technical responsibility
-
----
-
-#### 8. Internal Debug and Trace System
-
-```text
-fertpy/core/trace.py
-```
-
-Objective:
-
-- Enable detailed analysis of the decision flow
-- Support academic research and validation
-- Facilitate structural testing of the engine
+- Support for perennial crops
+- Structure for multiple technical bulletins
+- Foundation for future internationalization
 
 ---
 

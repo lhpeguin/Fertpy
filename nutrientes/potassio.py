@@ -11,19 +11,27 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
-from fertpy.infra.loaders.yaml_loader import carregar_modelo
+from fertpy.infra.loaders.adubacao_loader import carregar_modelo_adubacao
 from fertpy.infra.parsing.modelo_agronomico import parse_modelo_agronomico
 from fertpy.core.engine.avaliador import Avaliador
+from fertpy.services.validacao_parametros import validar_parametros
 
 
 class Potassio:
 
     def __init__(self, cultura: str, finalidade: str):
 
-        yaml = carregar_modelo(
+        boletim, cultura, finalidade = validar_parametros(
             "boletim_100",
             cultura,
-            f"{cultura}_{finalidade}_potassio"
+            finalidade
+        )
+
+        yaml = carregar_modelo_adubacao(
+            boletim,
+            cultura,
+            finalidade,
+            "potassio"
         )["potassio"]
 
         parseado = parse_modelo_agronomico(yaml)

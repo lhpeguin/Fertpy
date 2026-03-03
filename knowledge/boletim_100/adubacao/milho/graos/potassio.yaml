@@ -28,20 +28,20 @@ potassio:
     # Produtividade <6
     # ======================
 
-    - condicoes: { produtividade: "<6", teor_k: "<1.6" }
+    - condicoes: { produtividade: "0 <= produtividade <6", teor_k: "0 <= teor_k <1.6" }
       recomendacao: 70
 
-    - condicoes: { produtividade: "<6", teor_k: "1.6-3" }
+    - condicoes: { produtividade: "0 <= produtividade <6", teor_k: "1.6 <= teor_k <= 3" }
       recomendacao: 40
 
-    - condicoes: { produtividade: "<6", teor_k: ">3" }
+    - condicoes: { produtividade: "0 <= produtividade <6", teor_k: ">3" }
       recomendacao: 30
 
     # ======================
     # 6–8
     # ======================
 
-    - condicoes: { produtividade: "6 <= produtividade < 8", teor_k: "<1.6" }
+    - condicoes: { produtividade: "6 <= produtividade < 8", teor_k: "0 <= teor_k <1.6" }
       recomendacao: 90
 
     - condicoes: { produtividade: "6 <= produtividade < 8", teor_k: "1.6 <= teor_k <= 3" }
@@ -54,7 +54,7 @@ potassio:
     # 8–10
     # ======================
 
-    - condicoes: { produtividade: "8 <= produtividade < 10", teor_k: "<1.6" }
+    - condicoes: { produtividade: "8 <= produtividade < 10", teor_k: "0 <= teor_k <1.6" }
       recomendacao: 100
 
     - condicoes: { produtividade: "8 <= produtividade < 10", teor_k: "1.6 <= teor_k <= 3" }
@@ -67,7 +67,7 @@ potassio:
     # 10–12
     # ======================
 
-    - condicoes: { produtividade: "10 <= produtividade < 12", teor_k: "<1.6" }
+    - condicoes: { produtividade: "10 <= produtividade < 12", teor_k: "0 <= teor_k <1.6" }
       recomendacao: 110
 
     - condicoes: { produtividade: "10 <= produtividade < 12", teor_k: "1.6 <= teor_k <= 3" }
@@ -80,7 +80,7 @@ potassio:
     # >12
     # ======================
 
-    - condicoes: { produtividade: ">12", teor_k: "<1.6" }
+    - condicoes: { produtividade: ">12", teor_k: "0 <= teor_k <1.6" }
       recomendacao: 120
 
     - condicoes: { produtividade: ">12", teor_k: "1.6 <= teor_k <= 3" }
