@@ -1,0 +1,17 @@
+calagem:
+  categoria: processo
+  tipo: saturacao_por_bases
+  unidade_saida: t/ha
+
+  fonte_referencia:
+    documento: "Boletim 100"
+    instituicao: "IAC"
+    ano: 2022
+
+  parametros:
+    v2_desejado: 70
+    prnt_padrao: 80
+
+  limites:
+    dose_maxima: 5.0
+    dose_minima: 0.5

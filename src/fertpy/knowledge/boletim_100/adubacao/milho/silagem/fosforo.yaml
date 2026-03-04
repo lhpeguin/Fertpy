@@ -1,0 +1,101 @@
+fosforo:
+  nutriente: P
+  nutriente_recomendado: P2O5
+  unidade_saida: kg/ha
+
+  fonte_referencia:
+    documento: "Boletim 100"
+    instituicao: "IAC"
+    ano: 2022
+
+  metodo_analitico: resina
+  unidade_entrada: mg/dm3
+
+  regras:
+
+    # ======================
+    # Regras especiais
+    # ======================
+
+    - condicoes:
+        teor_P: ">=80"
+      classe: arranque
+      recomendacao:
+        min: 20
+        max: 40
+      texto: >
+        Em solos com P-resina > 80 mg/dm³,
+        recomenda-se apenas adubação de arranque.
+
+    - condicoes:
+        teor_P: "<16"
+        produtividade: ">=60"
+      classe: bloqueio
+      texto: >
+        É improvável alta produtividade de milho em solos com P muito baixo,
+        independentemente da dose aplicada.
+
+    # ======================
+    # Produtividade <45
+    # ======================
+
+    - condicoes: { produtividade: "0 <= produtividade <45", teor_P: "0 <= teor_P <16" }
+      recomendacao: 90
+
+    - condicoes: { produtividade: "0 <= produtividade <45", teor_P: "16 <= teor_P <= 40" }
+      recomendacao: 60
+
+    - condicoes: { produtividade: "0 <= produtividade <45", teor_P: ">40" }
+      recomendacao: 30
+
+    # ======================
+    # Produtividade 45-55
+    # ======================
+
+    - condicoes: { produtividade: "45 <= produtividade < 55", teor_P: "0 <= teor_P <16" }
+      recomendacao: 100
+
+    - condicoes: { produtividade: "45 <= produtividade < 55", teor_P: "16 <= teor_P <= 40" }
+      recomendacao: 70
+
+    - condicoes: { produtividade: "45 <= produtividade < 55", teor_P: ">40" }
+      recomendacao: 40
+
+    # ======================
+    # Produtividade 55-60
+    # ======================
+
+    - condicoes: { produtividade: "55 <= produtividade < 60", teor_P: "0 <= teor_P <16" }
+      recomendacao: 120
+
+    - condicoes: { produtividade: "55 <= produtividade < 60", teor_P: "16 <= teor_P <= 40" }
+      recomendacao: 90
+
+    - condicoes: { produtividade: "55 <= produtividade < 60", teor_P: ">40" }
+      recomendacao: 60
+
+    # ======================
+    # Produtividade 60-65
+    # ======================
+
+    - condicoes: { produtividade: "60 <= produtividade < 65", teor_P: "0 <= teor_P <16" }
+      recomendacao: null
+
+    - condicoes: { produtividade: "60 <= produtividade < 65", teor_P: "16 <= teor_P <= 40" }
+      recomendacao: 110
+
+    - condicoes: { produtividade: "60 <= produtividade < 65", teor_P: ">40" }
+      recomendacao: 70
+
+    # ======================
+    # Produtividade >65
+    # ======================
+
+    - condicoes: { produtividade: ">65", teor_P: "0 <= teor_P <16" }
+      recomendacao: null
+
+    - condicoes: { produtividade: ">65", teor_P: "16 <= teor_P <= 40" }
+      recomendacao: 120
+
+    - condicoes: { produtividade: ">65", teor_P: ">40" }
+      recomendacao: 80

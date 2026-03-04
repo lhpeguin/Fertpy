@@ -1,10 +1,22 @@
 [project]
 name = "fertpy"
-version = "0.2.1"
+version = "0.2.2"
 description = "Domain-driven deterministic agronomic calculation engine"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { file = "LICENSE" }
+authors = [
+    { name = "Luiz Henrique de Lima Peguin" },
+    { name = "Pedro Henrique Escaranaro Brasil" }
+]
+keywords = ["agronomy", "fertilizer", "soil", "liming", "agriculture"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+]
 dependencies = [
     "PyYAML>=6.0"
 ]
@@ -14,12 +26,16 @@ dev = [
     "pytest>=9.0.2"
 ]
 
+[project.urls]
+Homepage = "https://github.com/lhpeguin/Fertpy"
+Repository = "https://github.com/lhpeguin/Fertpy"
+
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["fertpy*"]
+where = ["src"]
 
 [tool.setuptools.package-data]
 fertpy = ["knowledge/**/*.yaml"]

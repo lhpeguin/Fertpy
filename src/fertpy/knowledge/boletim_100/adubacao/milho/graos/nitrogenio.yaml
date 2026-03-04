@@ -1,0 +1,65 @@
+nitrogenio:
+  # ======================
+  # Identidade
+  # ======================
+
+  nutriente: N
+  unidade_saida: kg/ha
+
+  fonte_referencia:
+    documento: "Boletim 100"
+    instituicao: "IAC"
+    ano: 2022
+
+  regras:
+
+    # ======================
+    # Produtividade <6
+    # ======================
+
+    - condicoes: { produtividade: "0 <= produtividade <6", classe_resp_N: "media_baixa" }
+      recomendacao: 60
+
+    - condicoes: { produtividade: "0 <= produtividade <6", classe_resp_N: "alto" }
+      recomendacao: 90
+
+    # ======================
+    # Produtividade 6–8
+    # ======================
+
+    - condicoes: { produtividade: "6 <= produtividade < 8", classe_resp_N: "media_baixa" }
+      recomendacao: 90
+
+    - condicoes: { produtividade: "6 <= produtividade < 8", classe_resp_N: "alto" }
+      recomendacao: 120
+
+    # ======================
+    # Produtividade 8–10
+    # ======================
+
+    - condicoes: { produtividade: "8 <= produtividade < 10", classe_resp_N: "media_baixa" }
+      recomendacao: 120
+
+    - condicoes: { produtividade: "8 <= produtividade < 10", classe_resp_N: "alto" }
+      recomendacao: 160
+
+    # ======================
+    # Produtividade 10–12
+    # ======================
+
+    - condicoes: { produtividade: "10 <= produtividade < 12", classe_resp_N: "media_baixa" }
+      recomendacao: 140
+
+    - condicoes: { produtividade: "10 <= produtividade < 12", classe_resp_N: "alto" }
+      recomendacao: 200
+
+
+    # ======================
+    # Produtividade >12
+    # ======================
+
+    - condicoes: { produtividade: ">12", classe_resp_N: "media_baixa" }
+      recomendacao: 160
+
+    - condicoes: { produtividade: ">12", classe_resp_N: "alto" }
+      recomendacao: 220

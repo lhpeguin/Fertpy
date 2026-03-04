@@ -1,3 +1,9 @@
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![Tests](https://img.shields.io/badge/tests-pytest-green)
+![Status](https://img.shields.io/badge/status-active-success)
+![License](https://img.shields.io/badge/license-Apache%202.0-lightgrey)
+[![PyPI version](https://img.shields.io/pypi/v/fertpy.svg)](https://pypi.org/project/fertpy/)
+
 # Fertpy
 
 **Languages:** 🇺🇸 English | 🇧🇷 [Português (Brasil)](README.pt-BR.md)
@@ -64,14 +70,34 @@ Future extensions may include regional parameterization and additional technical
 
 ---
 
-### 1. Clone the repository
+### Installation via PyPI (recommended)
+
+To install the latest stable release:
+
+```bash
+pip install fertpy
+```
+
+To verify the installation:
+
+```bash
+python -c "import fertpy; print(fertpy.__version__)"
+```
+
+---
+
+### Development Installation
+
+If you intend to contribute or modify the project:
+
+#### 1. Clone the repository
 
 ```bash
 git clone https://github.com/lhpeguin/fertpy.git
 cd fertpy
 ```
 
-### 2. Create and activate a virtual environment
+#### 2. Create and activate a virtual environment
 
 ```bash
 python -m venv venv
@@ -81,7 +107,7 @@ source venv/bin/activate
 venv\Scripts\activate
 ```
 
-### 3. Install dependencies
+#### 3. Install dependencies
 
 Standard installation (library usage)
 
@@ -204,7 +230,7 @@ This architecture enables:
 
 ## Project Status
 
-**Current Version:** v0.2.1 — Architectural Consolidation and Automated Test Suite Integration
+**Versão Atual:** v0.2.2 — Documentation Improvements and Distribution Refinement
 
 Fertpy is under active development, with a focus on domain-oriented architectural consolidation, explicit organization of agronomic knowledge, and deterministic validation through automated testing.
 
