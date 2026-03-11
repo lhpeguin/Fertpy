@@ -26,6 +26,8 @@ class Recomendacao:
 
     classe: Classe
 
+    nutriente_recomendado: str | None = None
+
     observacoes: list[str] | None = None
     fonte: dict | None = None
 

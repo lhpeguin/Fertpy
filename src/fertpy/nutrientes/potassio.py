@@ -48,6 +48,7 @@ class Potassio:
             criterios=self.modelo.criterios,
             contexto=contexto,
             nutriente=self.modelo.nutriente,
+            nutriente_recomendado=self.modelo.nutriente_recomendado,
             unidade=self.modelo.unidade_saida,
             observacoes=None,
             fonte=self.modelo.fonte_referencia

@@ -1,6 +1,6 @@
 fosforo:
   nutriente: P
-  nutriente_recomendado: P2O5
+  nutriente_recomendado: P₂O₅
   unidade_saida: kg/ha
 
   fonte_referencia:

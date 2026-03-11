@@ -1,6 +1,6 @@
 [project]
 name = "fertpy"
-version = "0.2.2"
+version = "0.2.3"
 description = "Domain-driven deterministic agronomic calculation engine"
 readme = "README.md"
 requires-python = ">=3.11"

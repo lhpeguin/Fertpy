@@ -166,57 +166,63 @@ Todos os testes devem ser executados com sucesso antes da submissão de alteraç
 
 ## Exemplo de Uso
 
+O exemplo abaixo demonstra o cálculo da necessidade de calagem e da dose de macronutrientes (N, P₂O₅ e K₂O) para a cultura do milho.
+
 ```python
 from fertpy import Calagem, Nitrogenio, Fosforo, Potassio
 
 
-# Correção do solo (cálculo de calagem)
+# Cálculo da necessidade de calagem
 c = Calagem("milho")
-NC = c.calcular(v_atual=40, ctc=70)
+NC = c.calcular(v_atual=55, ctc=70)
 
 
-# Cálculo de dose de Nitrogênio
+# Cálculo da dose de Nitrogênio
 n = Nitrogenio("milho", "graos")
-n_total = n.calcular("alto", 5.9)
+n_total = n.calcular("media_baixa", 12.1)
 
 
-# Cálculo de dose de Fósforo
+# Cálculo da dose de Fósforo
 p = Fosforo("milho", "graos")
-p_total = p.calcular(16, 5)
+p_total = p.calcular(26, 12.1)
 
 
-# Cálculo de dose de Potássio
+# Cálculo da dose de Potássio
 k = Potassio("milho", "graos")
-k_total = k.calcular(3.8, 11)
+k_total = k.calcular(3, 12.1)
 
 
-print(f"Necessidade de calagem: {NC} t/ha")
+# Resultado do cálculo de calagem
+print(f"\nNecessidade de calagem: {NC} t/ha\n")
 
 
-def print_result(r):
+def imprimir_calculo_nutrientes(r):
     print(
-        f"\nNutriente: {r.nutriente}\n"
-        f"Dose: {r.dose} {r.unidade}\n"
+        f"Nutriente: {r.nutriente}\n"
+        f"Dose de {r.nutriente_recomendado}: {r.dose} {r.unidade}\n"
         f"Classe: {r.classe.nome}\n"
         f"Observações: {r.observacoes or 'Nenhuma'}\n"
-        f"Fonte: {r.fonte['documento']} "
+        f"Boletim utilizado: {r.fonte['documento']} "
         f"({r.fonte['instituicao']}, {r.fonte['ano']})\n"
     )
 
 
-print_result(n_total)
-print_result(p_total)
-print_result(k_total)
+# Resultado do cálculo da dose total de cada nutriente
+imprimir_calculo_nutrientes(n_total)
+imprimir_calculo_nutrientes(p_total)
+imprimir_calculo_nutrientes(k_total)
 ```
 
 ---
 
 ## Representação do Conhecimento
 
-Os critérios agronômicos são definidos como arquivos YAML estruturados localizados em:
+Os critérios agronômicos são definidos em arquivos no formato YAML. Esse formato foi escolhido por possuir uma sintaxe simples e de fácil leitura, permitindo que profissionais de áreas fora da programação compreendam as regras ali descritas.
+
+As informações são armazenadas de forma estruturada no diretório:
 
 ```text
-knowledge/
+src/fertpy/knowledge/
 ```
 
 Cada arquivo codifica regras técnicas derivadas de boletins agronômicos.
@@ -232,7 +238,7 @@ Essa arquitetura permite:
 
 ## Status do Projeto
 
-**Versão Atual:** v0.2.2 — Melhorias na Documentação e Refinamento na Distribuição
+**Versão Atual:** v0.2.3 — Melhorias na Documentação e Refinamento na Distribuição
 
 O Fertpy está em desenvolvimento ativo, com foco na consolidação da arquitetura orientada a domínio, na organização explícita do conhecimento agronômico e na validação determinística dos modelos por meio de testes automatizados.
 
@@ -272,9 +278,8 @@ O Fertpy está em desenvolvimento ativo, com foco na consolidação da arquitetu
 ### Limitações Atuais
 
 - Suporte a uma única cultura (milho)
-- Fonte técnica única por nutriente
-- Um único método analítico por nutriente
-- Recomendações técnicas restritas a um único país (Brasil)
+- Suporte apenas ao método de extração por resina na análise de solo
+- Recomendações técnicas baseadas no Boletim 100 (IAC), específico para o estado de São Paulo
 - Sem agregação de múltiplas fontes
 - Lógica estritamente determinística (sem modelagem probabilística)
 
@@ -355,33 +360,39 @@ Foco: auditabilidade científica.
 
 ## Licença
 
-Licenciado sob a Apache License 2.0.
-Consulte o arquivo LICENSE para mais detalhes.
+Este projeto está licenciado sob a [Apache License 2.0](LICENSE).
 
 ---
 
 ## Autores
 
-See [AUTHORS.md](AUTHORS.md)
+Veja [AUTHORS.md](AUTHORS.md)
 
 ---
 
 ## Contribuições
 
-Contribuições são bem-vindas.
-Antes de submeter um pull request:
+Contribuições são bem-vindas. Antes de submeter um pull request, certifique-se de:
 
-- Mantenha a separação entre domínio e infraestrutura
-- Preserve o caráter determinístico da lógica de cálculo
-- Garanta que artefatos de conhecimento sejam rastreáveis a fontes técnicas
-- Utilize conventional commits
+- Manter a separação entre domínio e infraestrutura
+- Preservar o caráter determinístico da lógica de cálculo
+- Garantir que os artefatos de conhecimento sejam rastreáveis a fontes técnicas
+- Utilizar o padrão de commits Conventional Commits
 
 ---
 
 ## Aviso Legal
 
-O Fertpy realiza cálculos agronômicos determinísticos com base em critérios técnicos estruturados.
-Ele não fornece recomendações agronômicas, consultoria profissional ou serviços de tomada de decisão.
-Os usuários são responsáveis por interpretar os resultados dentro de seu contexto agronômico, regional e regulatório específico.
+O Fertpy é uma biblioteca de software de código aberto que realiza cálculos agronômicos determinísticos com base em critérios técnicos estruturados e em referências agronômicas publicadas.
+
+Os resultados gerados pelo software possuem caráter informativo e técnico e não constituem recomendações agronômicas, consultoria profissional ou serviços de tomada de decisão.
+
+A interpretação e a aplicação dos resultados devem considerar fatores específicos de cada situação, incluindo condições de solo, sistema de cultivo, manejo adotado, método analítico utilizado e recomendações regionais vigentes.
+
+A análise e interpretação dos resultados devem ser realizadas por profissionais legalmente habilitados, conforme as atribuições estabelecidas pelo sistema CONFEA/CREA, como Engenheiros Agrônomos ou Técnicos Agrícolas.
+
+Os usuários são integralmente responsáveis pela interpretação dos resultados e por qualquer decisão ou ação tomada com base nas informações produzidas pelo software.
+
+Os autores e colaboradores do projeto não se responsabilizam por eventuais perdas, danos ou consequências decorrentes do uso direto ou indireto desta ferramenta.
 
 ---

@@ -4,6 +4,7 @@ nitrogenio:
   # ======================
 
   nutriente: N
+  nutriente_recomendado: N
   unidade_saida: kg/ha
 
   fonte_referencia:

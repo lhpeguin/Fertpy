@@ -1,6 +1,6 @@
 potassio:
   nutriente: K
-  nutriente_recomendado: K2O
+  nutriente_recomendado: K₂O
   unidade_saida: kg/ha
 
   fonte_referencia:

@@ -24,6 +24,7 @@ class Avaliador:
         criterios: list[Criterio],
         contexto: dict[str, float],
         nutriente: str,
+        nutriente_recomendado: str,
         unidade: str,
         observacoes: list[str] | None = None,
         fonte: dict | None = None
@@ -64,6 +65,7 @@ class Avaliador:
                 return Recomendacao(
                     nutriente=nutriente,
                     dose=criterio.recomendacao,
+                    nutriente_recomendado=nutriente_recomendado,
                     unidade=unidade,
                     classe=classe_final,
                     observacoes=obs_final,
