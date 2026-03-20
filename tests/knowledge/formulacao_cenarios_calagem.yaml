@@ -1,0 +1,32 @@
+- descricao: calagem simples com calcario agricola
+  tipo: calagem
+
+  cultura: milho
+  v_atual: 40
+  ctc: 10
+
+  fontes_yaml:
+    - calcario_agricola
+
+  esperado:
+    calcario_agricola: 6.67
+
+- descricao: calagem com escolha por custo minimo entre fontes
+  tipo: calagem
+
+  cultura: milho
+  v_atual: 40
+  ctc: 10
+
+  solver: custo_minimo
+
+  fontes_yaml:
+    - calcario_agricola
+    - calcario_calcinado
+
+  precos:
+    calcario_agricola: 150
+    calcario_calcinado: 400
+
+  esperado:
+    calcario_calcinado: 5.56

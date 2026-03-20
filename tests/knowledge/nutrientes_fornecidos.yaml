@@ -1,0 +1,21 @@
+- fonte: ureia
+  dose: 100
+  esperado:
+    N: 45
+
+- fonte: map
+  dose: 100
+  esperado:
+    N: 17
+    P2O5: 45
+
+- fonte: kcl
+  dose: 100
+  esperado:
+    K2O: 50
+
+- fonte: sulfato_amonio
+  dose: 100
+  esperado:
+    N: 20
+    S: 22

@@ -1,0 +1,18 @@
+casos:
+  - descricao: limite minimo aplicado
+    entrada:
+      v_atual: 50
+      ctc: 10
+    esperado: 0.2
+
+  - descricao: limite maximo aplicado
+    entrada:
+      v_atual: 0
+      ctc: 100
+    esperado: 5.0
+
+  - descricao: sem necessidade
+    entrada:
+      v_atual: 75
+      ctc: 10
+    esperado: 0

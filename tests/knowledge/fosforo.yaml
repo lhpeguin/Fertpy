@@ -1,0 +1,121 @@
+graos:
+
+  matriz:
+    - p_resina: 10
+      produtividade: 5.5
+      esperado: 90
+    - p_resina: 25
+      produtividade: 5.5
+      esperado: 60
+    - p_resina: 50
+      produtividade: 5.5
+      esperado: 30
+
+    - p_resina: 10
+      produtividade: 7
+      esperado: 100
+    - p_resina: 25
+      produtividade: 7
+      esperado: 70
+    - p_resina: 50
+      produtividade: 7
+      esperado: 40
+
+    - p_resina: 10
+      produtividade: 9
+      esperado: 120
+    - p_resina: 25
+      produtividade: 9
+      esperado: 90
+    - p_resina: 50
+      produtividade: 9
+      esperado: 60
+
+    - p_resina: 25
+      produtividade: 11
+      esperado: 110
+    - p_resina: 50
+      produtividade: 11
+      esperado: 70
+
+    - p_resina: 25
+      produtividade: 13
+      esperado: 120
+    - p_resina: 50
+      produtividade: 13
+      esperado: 80
+
+  bordas:
+    - p_resina: 15.9
+      esperado: 100
+    - p_resina: 16
+      esperado: 70
+    - p_resina: 40
+      esperado: 70
+    - p_resina: 40.1
+      esperado: 40
+
+  especiais:
+    arranque:
+      entrada:
+        p_resina: 85
+        produtividade: 8
+      esperado:
+        tipo: intervalo
+        min: 20
+        max: 40
+
+    bloqueio:
+      entrada:
+        p_resina: 10
+        produtividade: 11
+      esperado:
+        tipo: none
+
+
+silagem:
+
+  matriz:
+    - p_resina: 10
+      produtividade: 40
+      esperado: 90
+    - p_resina: 25
+      produtividade: 40
+      esperado: 60
+    - p_resina: 50
+      produtividade: 40
+      esperado: 30
+
+    - p_resina: 10
+      produtividade: 50
+      esperado: 100
+    - p_resina: 25
+      produtividade: 50
+      esperado: 70
+    - p_resina: 50
+      produtividade: 50
+      esperado: 40
+
+    - p_resina: 10
+      produtividade: 58
+      esperado: 120
+    - p_resina: 25
+      produtividade: 58
+      esperado: 90
+    - p_resina: 50
+      produtividade: 58
+      esperado: 60
+
+    - p_resina: 25
+      produtividade: 63
+      esperado: 110
+    - p_resina: 50
+      produtividade: 63
+      esperado: 70
+
+    - p_resina: 25
+      produtividade: 70
+      esperado: 120
+    - p_resina: 50
+      produtividade: 70
+      esperado: 80

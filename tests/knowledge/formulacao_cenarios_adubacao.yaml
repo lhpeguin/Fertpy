@@ -1,0 +1,180 @@
+- descricao: combinacao NPK classica
+  demanda:
+    N: 120
+    P2O5: 80
+    K2O: 60
+
+  fontes_yaml:
+    - ureia
+    - map
+    - kcl
+
+  esperado:
+    Ureia: 199.51
+    MAP: 177.78
+    Cloreto de Potássio: 120.0
+
+
+- descricao: combinacao NP
+  demanda:
+    N: 100
+    P2O5: 50
+
+  fontes_yaml:
+    - ureia
+    - map
+
+  esperado:
+    Ureia: 180.25
+    MAP: 111.11
+
+
+- descricao: fonte composta definida pelo usuario
+  demanda:
+    N: 80
+    P2O5: 60
+    K2O: 40
+
+  fontes_custom:
+    - nome: NPK 08-28-16
+      garantias:
+        N: 8
+        P2O5: 28
+        K2O: 16
+
+  esperado: erro
+
+- descricao: custo minimo com fontes concorrentes (MAP vs SFS)
+  tipo: adubacao
+
+  demanda:
+    N: 120
+    P2O5: 80
+    K2O: 60
+
+  fontes_custom:
+    - nome: ureia
+      garantias:
+        N: 45
+
+    - nome: map
+      garantias:
+        N: 11
+        P2O5: 52
+
+    - nome: sfs
+      garantias:
+        P2O5: 18
+
+    - nome: kcl
+      garantias:
+        K2O: 60
+
+  precos:
+    ureia: 3000
+    map: 4000
+    sfs: 1800
+    kcl: 2500
+
+  esperado:
+    ureia: 229.06
+    map: 153.85
+    kcl: 100.0
+
+  tolerancia: 0.1
+
+- descricao: escolha da melhor formulacao NPK
+  tipo: adubacao
+
+  demanda:
+    N: 80
+    P2O5: 60
+    K2O: 40
+
+  fontes_custom:
+    - nome: NPK_04_14_08
+      garantias:
+        N: 4
+        P2O5: 14
+        K2O: 8
+
+    - nome: NPK_08_28_16
+      garantias:
+        N: 8
+        P2O5: 28
+        K2O: 16
+
+    - nome: NPK_20_05_20
+      garantias:
+        N: 20
+        P2O5: 5
+        K2O: 20
+
+    - nome: NPK_16_12_8
+      garantias:
+        N: 16
+        P2O5: 12
+        K2O: 8
+
+  precos:
+    NPK_04_14_08: 2500
+    NPK_08_28_16: 2600
+    NPK_20_05_20: 3000
+    NPK_16_12_8: 3000
+
+  esperado:
+    npk_08_28_16: 11.76
+    npk_20_05_20: 25.88
+    npk_16_12_8: 461.76
+
+  tolerancia: 0.10
+
+- descricao: fonte unica - escolher melhor NPK
+  tipo: adubacao
+
+  demanda:
+    N: 80
+    P2O5: 60
+    K2O: 40
+
+  fontes_custom:
+    - nome: NPK_04_14_08
+      garantias:
+        N: 4
+        P2O5: 14
+        K2O: 8
+
+    - nome: NPK_08_28_16
+      garantias:
+        N: 8
+        P2O5: 28
+        K2O: 16
+
+    - nome: NPK_16_12_8
+      garantias:
+        N: 16
+        P2O5: 12
+        K2O: 8
+
+  modo: fonte_unica
+
+  esperado:
+    npk_16_12_8: 500.0
+
+- descricao: fonte unica impossivel (excesso absurdo)
+  tipo: adubacao
+
+  demanda:
+    N: 100
+    P2O5: 10
+
+  fontes_custom:
+    - nome: NPK_10_50_10
+      garantias:
+        N: 10
+        P2O5: 50
+        K2O: 10
+
+  modo: fonte_unica
+
+  esperado: erro

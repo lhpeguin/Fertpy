@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from collections import defaultdict
 
 from fertpy.core.domain.criterio import Criterio
-from fertpy.core.domain.exceptions import ParametroInvalidoError
+from fertpy.core.domain.excecoes import ParametroInvalidoError
 
 
 @dataclass(frozen=True)
@@ -29,6 +29,7 @@ class ModeloAgronomico:
     unidade_entrada: str | None = None
     metodo_analitico: str | None = None
     fonte_referencia: dict | None = None
+    fracionamento: dict | None = None
 
     def __post_init__(self):
 

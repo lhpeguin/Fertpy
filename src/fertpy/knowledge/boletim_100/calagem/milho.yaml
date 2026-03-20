@@ -10,8 +10,8 @@ calagem:
 
   parametros:
     v2_desejado: 70
-    prnt_padrao: 80
+    prnt_padrao: 100
 
-  limites:
-    dose_maxima: 5.0
-    dose_minima: 0.5
+  recomendacoes:
+    parcelamento_acima_de: 5.0
+    mensagem_parcelamento: "Doses acima de 5 t/ha devem ser parceladas para melhor eficiência agronômica."

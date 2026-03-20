@@ -1,0 +1,50 @@
+#============================
+# Fertilizantes nitrogenados
+#============================
+
+ureia:
+  nome: Ureia
+  garantias:
+    N: 45
+
+nitrato_amonio:
+  nome: Nitrato de amônio
+  garantias:
+    N: 32
+
+sulfato_amonio:
+  nome: Sulfato de amônio
+  garantias:
+    N: 20
+    S: 22
+
+nitrato_calcio:
+  nome: Nitrato de cálcio
+  garantias:
+    N: 14
+    Ca: 16
+
+nitrato_magnesio:
+  nome: Nitrato de magnesio
+  garantias:
+    N: 10
+    Mg: 8
+
+#============================
+# Fertilizantes fosfatados
+#============================
+
+map:
+  nome: MAP
+  garantias:
+    N: 17
+    P2O5: 45
+
+#============================
+# Fertilizantes potássicos
+#============================
+
+kcl:
+  nome: Cloreto de Potássio
+  garantias:
+    K2O: 50

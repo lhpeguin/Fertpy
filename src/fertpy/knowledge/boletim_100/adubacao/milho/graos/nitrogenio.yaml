@@ -1,7 +1,7 @@
 nitrogenio:
-  # ======================
+  # ===========
   # Identidade
-  # ======================
+  # ===========
 
   nutriente: N
   nutriente_recomendado: N
@@ -11,6 +11,19 @@ nitrogenio:
     documento: "Boletim 100"
     instituicao: "IAC"
     ano: 2022
+
+  # ==============
+  # Fracionamento
+  # ==============
+
+  fracionamento:
+    estrategia: "threshold"
+
+    threshold: 90
+
+    plantio:
+      min: 30
+      max: 60
 
   regras:
 

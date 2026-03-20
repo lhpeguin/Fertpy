@@ -15,6 +15,7 @@ from fertpy.infra.parsing.condicao import parse_condicao
 from fertpy.core.domain.classe import Classe
 from fertpy.core.domain.criterio import Criterio
 from fertpy.core.domain.modelo_agronomico import ModeloAgronomico
+from fertpy.infra.parsing.fracionamento import parse_fracionamento
 
 
 def parse_modelo_agronomico(modelo: dict) -> ModeloAgronomico:
@@ -47,6 +48,10 @@ def parse_modelo_agronomico(modelo: dict) -> ModeloAgronomico:
             )
         )
     
+    fracionamento = parse_fracionamento(
+        modelo.get("fracionamento")
+    )
+    
     return ModeloAgronomico(
         nutriente=modelo["nutriente"],
         unidade_saida=modelo["unidade_saida"],
@@ -54,5 +59,6 @@ def parse_modelo_agronomico(modelo: dict) -> ModeloAgronomico:
         nutriente_recomendado=modelo.get("nutriente_recomendado"),
         unidade_entrada=modelo.get("unidade_entrada"),
         metodo_analitico=modelo.get("metodo_analitico"),
-        fonte_referencia=modelo.get("fonte_referencia")
+        fonte_referencia=modelo.get("fonte_referencia"),
+        fracionamento=fracionamento
     )

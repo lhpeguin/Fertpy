@@ -30,6 +30,7 @@ class Recomendacao:
 
     observacoes: list[str] | None = None
     fonte: dict | None = None
+    fracionamento: dict | None = None
 
     def __post_init__(self):
 

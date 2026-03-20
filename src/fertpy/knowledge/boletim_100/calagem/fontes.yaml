@@ -1,0 +1,31 @@
+#============================
+# Corretivos de acidez
+#============================
+
+calcario_agricola:
+  nome: Calcário agrícola
+  garantias:
+    PN: 67
+    CaO_MgO: 38
+    PRNT: 45
+
+calcario_calcinado:
+  nome: Calcário calcinado agrícola
+  garantias:
+    PN: 80
+    CaO_MgO: 43
+    PRNT: 54
+
+cal_hidratada:
+  nome: Cal hidratada agrícola
+  garantias:
+    PN: 94
+    CaO_MgO: 50
+    PRNT: 90
+
+cal_virgem:
+  nome: Cal virgem agrícola
+  garantias:
+    PN: 125
+    CaO_MgO: 68
+    PRNT: 120

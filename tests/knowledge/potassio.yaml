@@ -1,0 +1,126 @@
+graos:
+
+  matriz:
+    # <6
+    - k: 1.2
+      produtividade: 5.5
+      esperado: 70
+    - k: 2.0
+      produtividade: 5.5
+      esperado: 40
+    - k: 3.2
+      produtividade: 5.5
+      esperado: 30
+
+    # 6–8
+    - k: 1.2
+      produtividade: 7
+      esperado: 90
+    - k: 2.0
+      produtividade: 7
+      esperado: 50
+    - k: 3.2
+      produtividade: 7
+      esperado: 30
+
+    # 8–10
+    - k: 1.2
+      produtividade: 9
+      esperado: 100
+    - k: 2.0
+      produtividade: 9
+      esperado: 70
+    - k: 3.2
+      produtividade: 9
+      esperado: 40
+
+    # 10–12
+    - k: 1.2
+      produtividade: 11
+      esperado: 110
+    - k: 2.0
+      produtividade: 11
+      esperado: 90
+    - k: 3.2
+      produtividade: 11
+      esperado: 50
+
+    # >12
+    - k: 1.2
+      produtividade: 13
+      esperado: 120
+    - k: 2.0
+      produtividade: 13
+      esperado: 100
+    - k: 3.2
+      produtividade: 13
+      esperado: 60
+
+  bordas:
+    - k: 1.59
+      esperado: 90
+    - k: 1.6
+      esperado: 50
+    - k: 3.0
+      esperado: 50
+    - k: 3.01
+      esperado: 30
+
+
+silagem:
+
+  matriz:
+    # <45
+    - k: 1.2
+      produtividade: 40
+      esperado: 70
+    - k: 2.0
+      produtividade: 40
+      esperado: 40
+    - k: 3.2
+      produtividade: 40
+      esperado: 30
+
+    # 45–55
+    - k: 1.2
+      produtividade: 50
+      esperado: 90
+    - k: 2.0
+      produtividade: 50
+      esperado: 50
+    - k: 3.2
+      produtividade: 50
+      esperado: 30
+
+    # 55–60
+    - k: 1.2
+      produtividade: 58
+      esperado: 100
+    - k: 2.0
+      produtividade: 58
+      esperado: 70
+    - k: 3.2
+      produtividade: 58
+      esperado: 40
+
+    # 60–65
+    - k: 1.2
+      produtividade: 63
+      esperado: 110
+    - k: 2.0
+      produtividade: 63
+      esperado: 90
+    - k: 3.2
+      produtividade: 63
+      esperado: 50
+
+    # >65
+    - k: 1.2
+      produtividade: 70
+      esperado: 120
+    - k: 2.0
+      produtividade: 70
+      esperado: 100
+    - k: 3.2
+      produtividade: 70
+      esperado: 60

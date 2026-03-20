@@ -14,7 +14,7 @@
 import unicodedata
 
 from fertpy.utils.parametros import extrair_parametros
-from fertpy.core.domain.exceptions import ParametroInvalidoError
+from fertpy.core.domain.excecoes import ParametroInvalidoError
 
 
 def normalizar(texto: str) -> str:

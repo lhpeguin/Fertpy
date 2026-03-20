@@ -1,0 +1,86 @@
+graos:
+
+  matriz:
+    # <6
+    - produtividade: 5
+      classe_n: media_baixa
+      esperado: 60
+    - produtividade: 5
+      classe_n: alto
+      esperado: 90
+
+    # 6–8
+    - produtividade: 7
+      classe_n: media_baixa
+      esperado: 90
+    - produtividade: 7
+      classe_n: alto
+      esperado: 120
+
+    # 8–10
+    - produtividade: 9
+      classe_n: media_baixa
+      esperado: 120
+    - produtividade: 9
+      classe_n: alto
+      esperado: 160
+
+    # 10–12
+    - produtividade: 11
+      classe_n: media_baixa
+      esperado: 140
+    - produtividade: 11
+      classe_n: alto
+      esperado: 200
+
+    # >12
+    - produtividade: 13
+      classe_n: media_baixa
+      esperado: 160
+    - produtividade: 13
+      classe_n: alto
+      esperado: 220
+
+
+silagem:
+
+  matriz:
+    # <45
+    - produtividade: 44
+      classe_n: media_baixa
+      esperado: 60
+    - produtividade: 44
+      classe_n: alto
+      esperado: 90
+
+    # 45–55
+    - produtividade: 50
+      classe_n: media_baixa
+      esperado: 90
+    - produtividade: 50
+      classe_n: alto
+      esperado: 120
+
+    # 55–60
+    - produtividade: 58
+      classe_n: media_baixa
+      esperado: 120
+    - produtividade: 58
+      classe_n: alto
+      esperado: 160
+
+    # 60–65
+    - produtividade: 63
+      classe_n: media_baixa
+      esperado: 140
+    - produtividade: 63
+      classe_n: alto
+      esperado: 200
+
+    # >65
+    - produtividade: 70
+      classe_n: media_baixa
+      esperado: 160
+    - produtividade: 70
+      classe_n: alto
+      esperado: 220
